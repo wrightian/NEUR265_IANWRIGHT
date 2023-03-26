@@ -1,0 +1,16 @@
+!pip install transformers
+from transformers import pipeline
+question_answerer = pipeline("question-answering")
+context = '''I loved reading biographies of scientists. I took a thick book out of the school library called 'Great Men of Science' week after week. I was fascinated by the life stories and ideas of 
+Nicolaus Copernicus, Gallileo Galliei, Louis Pasteur and Jonas Salk. On some level, I must have noticed that the only woman represented in the science biography section of our library was Marie Curie, but I don’t remember reflecting on it much or being bothered by it. In retrospect, I wonder if I might have considered a career in science if there had been more books about women in science in my elementary school library. 
+
+I took a computer programming class in high school, not because I was interested in programming at the time, but because a friend and I wanted to take a class together, and it was the only elective that fit into both of our schedules. As it turned out, I thoroughly enjoyed it, and my friend and I, both girls, were the only two students who got A's on the final. It would be decades before I would look back at my experience in that class, think about how much fun I had writing the programs we were assigned, and wonder what it might be like to get paid to write programs all day.
+
+In my late twenties, I was very proud of the trajectory of my career. I felt like I had not made a single false step and was on the path to a high-visibility position at a high-profile publication. After several years of working as a community journalist, I was poised to take the next step, which I thought would be an editorial position as a glossy magazine. Not long after I sent out my resume and writing samples, I started getting calls for interviews.
+
+At that time my husband pointed out to me that I didn’t sound excited about my future prospects, even though I was well on my way to doing what I had always thought I wanted to do, and for the first time in my life, I questioned whether I wanted to be a professional writer.
+
+I realized that writing under the pressure of regular deadlines felt repressive, something I had never let myself think about, because it never occurred to me that I might have any other kind of job.'''
+
+result=question_answerer(question="Why did you take computer programming?", context=context)
+print(f"answer: '{result['answer']}'")
